@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TDPQC7FFLY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TDPQC7FFLY');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="./jaakko_logo_thumb.png">
+    <meta property="og:description" content="Jaakko is on a mission to redefine access to property insights and inventory for buyers across the globe.">
+    <title>Jaakko.com | Jaakko will be live soon</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Poppins', Helvetica, sans-serif;
+        }
+
+        body {
+            background: url('map_bg.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            position: relative;
+        }
+
+        .logo-top-center {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .center-content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .slogan {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 24px;
+        }
+
+        .sub-slogan {
+            margin-top: 5px;
+            font-size: 18px;
+        }
+
+        .email-form {
+            margin-top: 10px;
+        }
+
+        .email-form label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .email-form input[type="email"] {
+            padding: 10px;
+            width: 300px;
+            max-width: 90%;
+            margin-right: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .email-form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #3e55cd;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .email-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+        }
+
+        .linkedin-icon {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 600px) {
+            .linkedin-icon {
+                position: static;
+                margin: 0 auto;
+                display: block;
+                margin-bottom: 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo-top-center">
+            <img src="jaakkocom_logo2.png" alt="Jaakkocom Logo" width="250">
+        </div>
+
+        <div class="center-content">
+            <img src="jaakko_logo.png" alt="Jaakko Logo" width="100">
+            <div class="slogan">Stay tuned</div>
+            <div class="sub-slogan">Jaakko will be live soon</div>
+
+            <!-- Email Form -->
+            <div class="email-form">
+                <label for="email">Want to be the first to know when it happens? Drop your e-mail below:</label>
+                <form id="notifyForm">
+                    <input type="email" id="email" name="email" placeholder="Your e-mail" required>
+                    <button type="submit">Notify me!</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- LinkedIn Icon -->
+        <a href="https://www.linkedin.com/company/jaakko-com" target="_blank">
+            <img src="./linkedin.png" alt="Jaakko.com LinkedIn" class="linkedin-icon">
+        </a>
+
+        <div class="copyright">
+            &copy; 2024 Jaakkocom Oy | All rights reserved | jaakko@jaakko.com
+        </div>
+    </div>
+
+    <script>
+document.getElementById('notifyForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const email = document.getElementById('email').value;
+    const submitButton = document.querySelector('.email-form button');
+    const originalButtonText = submitButton.textContent;
+
+    // Disable the button and show loading text
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+
+    const xhr = new XMLHttpRequest();
+    const url = `https://script.google.com/macros/s/AKfycbyUYoup1OgMV-fKS-v_pthTCO7o3I-dCWlJlqQftF0ntnjWzEnpkgUofpwozGYWXYiqxg/exec?email=${encodeURIComponent(email)}`;
+
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            // Re-enable the button and restore original text
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+
+            if (xhr.status === 200) {
+                alert("Thank you so much! We'll notify you when we go live.");
+            } else {
+                alert("Oops, something went wrong. Please try again.");
+            }
+        }
+    };
+    xhr.send();
+});
+    </script>
+
+</body>
+</html>
